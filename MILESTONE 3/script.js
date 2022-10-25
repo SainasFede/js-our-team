@@ -23,7 +23,7 @@ Aggiungere degli aggettivi (più di uno) che identifichino ogni persona e stampa
 
 // CREO L'ARRAY TEAM
 const information = document.getElementById('information');
-
+const rowCard = document.querySelector('.row-card');
 
 const team = [
   {
@@ -104,4 +104,28 @@ for(let groupMember of team){
 
 for(let groupMember of team){
 
+  let skills = '';
+
+  for(let skill of groupMember.skills){
+    skills += `<p>${skill}</p>`
+  }
+
+  let card = `
+  <div class="col-4 mb-5">
+  
+    <div class="card" style="width: 24rem;">
+      <img src="${groupMember.photo}" class="card-img-top" alt="${groupMember.photo}">
+      <div class="card-body text-center">
+        <h3 class="card-title">${groupMember.nome}</h3>
+          <h5>${groupMember.ruolo}</h5>         
+        </div>
+      <div class="skills text-center">
+      <h6 class="fw-bold">Skills</h6>
+              ${skills}
+      </div>
+    </div>
+  
+  </div>`;
+
+  rowCard.innerHTML += card;
 }
